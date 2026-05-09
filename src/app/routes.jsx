@@ -1,15 +1,21 @@
 import { createBrowserRouter } from "react-router";
 
 //Layout
-import { DashboardLayout } from "../common/layouts/dashboard-layout";
+import { DashboardPage } from "../common/layouts/DashboardPage";
+import { LandingPage } from "../common/layouts/LandingPage";
+
 //Features
 
 export const router = createBrowserRouter(
     [
         {
             path: "/",
-            element: <DashboardLayout />,
+            element: <LandingPage />,
+        },
+        {
+            path: "/dashboard",
+            element: <DashboardPage />,
         }
-           
+
     ]
 )
