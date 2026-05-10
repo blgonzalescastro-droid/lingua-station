@@ -32,6 +32,14 @@ export function DashboardPage() {
                         >
                             Dictionary
                         </NavLink>
+                        <NavLink
+                            to="/dashboard/news"
+                            className={({ isActive }) =>
+                                `px-3 py-2 rounded text-sm transition-colors ${isActive ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`
+                            }
+                        >
+                            News
+                        </NavLink>
                         <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded text-sm">Profile</a>
                         <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded text-sm">Settings</a>
                     </nav>

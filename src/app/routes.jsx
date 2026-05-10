@@ -6,6 +6,7 @@ import { LoginPage } from "../features/auth/pages/login";
 import { ProtectedRoute } from "../features/auth/components/protected-route";
 import { DashboardHome } from "../features/dashboard/pages/DashboardHome";
 import { DictionaryPage } from "../features/dictionary/pages/DictionaryPage";
+import { NewsPage } from "../features/news/pages/NewsPage";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
                     {
                         path: "dictionary",
                         element: <DictionaryPage />,
+                    },
+                    {
+                        path: "news",
+                        element: <NewsPage />,
                     },
                 ],
             },
