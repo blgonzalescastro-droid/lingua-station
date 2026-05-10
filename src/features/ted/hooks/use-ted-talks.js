@@ -19,7 +19,13 @@ export const useTedTalks = (topic, subtitleLang) => {
 
         fetchTalks({ topic, subtitleLang })
             .then(results => { if (!cancelled) setAllTalks(results); })
-            .catch(() => { if (!cancelled) setError('Could not load TED Talks. Make sure you are subscribed to the API on RapidAPI.'); })
+            .catch((err) => {
+                if (!cancelled) setError(
+                    err.message === 'RATE_LIMIT'
+                        ? 'Rate limit reached (free tier). Wait a moment and try changing the topic.'
+                        : 'Could not load TED Talks. Make sure you are subscribed to the API on RapidAPI.'
+                );
+            })
             .finally(() => { if (!cancelled) setLoading(false); });
 
         return () => { cancelled = true; };

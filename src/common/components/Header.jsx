@@ -5,32 +5,44 @@ export function Header() {
     const { isAuthenticated, logout } = useAuth();
 
     return (
-        <header className="bg-linear-to-r from-blue-500 to-purple-600 text-white p-4 flex justify-between items-center">
-            <h1 className="text-3xl font-bold">Lingua Station</h1>
-            <nav className="space-x-4">
-                <a href="#" className="hover:bg-white hover:text-blue-500 px-3 py-2 rounded">Home</a>
-                <a href="#" className="hover:bg-white hover:text-blue-500 px-3 py-2 rounded">Features</a>
-                <a href="#" className="hover:bg-white hover:text-blue-500 px-3 py-2 rounded">Testimonials</a>
-                <a href="#" className="hover:bg-white hover:text-blue-500 px-3 py-2 rounded">Contact</a>
+        <header className="bg-white border-b border-gray-100 px-4 sm:px-8 h-14 flex items-center justify-between sticky top-0 z-10">
+            <Link to="/" className="flex items-center gap-2">
+                <div className="w-7 h-7 bg-orange-500 rounded-full flex items-center justify-center shrink-0">
+                    <span className="text-white font-bold text-xs">L</span>
+                </div>
+                <span className="font-bold text-gray-900 text-sm">Lingua Station</span>
+            </Link>
+
+            <nav className="hidden md:flex items-center gap-7">
+                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">How it works</a>
+                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Quests</a>
+                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Pricing</a>
+                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Stories</a>
             </nav>
-            <div className="flex items-center space-x-4">
+
+            <div className="flex items-center gap-2 sm:gap-3">
                 {isAuthenticated ? (
                     <>
-                        <Link to="/dashboard" className="bg-white text-blue-500 px-4 py-2 rounded hover:bg-gray-200">
+                        <Link to="/dashboard" className="hidden sm:block text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">
                             Dashboard
                         </Link>
                         <button
                             onClick={logout}
-                            className="bg-transparent border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-blue-500"
+                            className="bg-gray-900 hover:bg-gray-800 text-white px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer"
                         >
                             Log Out
                         </button>
                     </>
                 ) : (
                     <>
-                        <button className="bg-white text-blue-500 px-4 py-2 rounded hover:bg-gray-200">Sign Up</button>
-                        <Link to="/login" className="bg-transparent border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-blue-500">
-                            Log In
+                        <Link to="/login" className="hidden sm:block text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">
+                            Sign in
+                        </Link>
+                        <Link
+                            to="/register"
+                            className="bg-gray-900 hover:bg-gray-800 text-white px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap"
+                        >
+                            Start free →
                         </Link>
                     </>
                 )}

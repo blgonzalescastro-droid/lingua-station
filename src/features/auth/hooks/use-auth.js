@@ -1,18 +1,3 @@
-import { loginService } from '../services/auth-services';
-import { useAuthStore } from '../store/auth-store';
+import { useAuthContext } from '../context/AuthContext';
 
-export const useAuth = () => {
-    const { token, setToken, logout } = useAuthStore();
-
-    const login = async ({ username, password }) => {
-        const token = await loginService({ username, password });
-        setToken(token);
-    };
-
-    return {
-        token,
-        login,
-        logout,
-        isAuthenticated: !!token,
-    };
-};
+export const useAuth = () => useAuthContext();

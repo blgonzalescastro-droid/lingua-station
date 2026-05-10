@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useAuth } from '../hooks/use-auth';
 
-export function LoginPage() {
-    const { login } = useAuth();
+export function RegisterPage() {
+    const { register } = useAuth();
     const navigate = useNavigate();
 
-    const [form, setForm] = useState({ username: '', password: '' });
+    const [form, setForm] = useState({ username: '', email: '', password: '', confirm: '' });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -15,12 +15,18 @@ export function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        if (form.password !== form.confirm) {
+            setError('Passwords do not match.');
+            return;
+        }
+
         setLoading(true);
         try {
-            await login({ username: form.username, password: form.password });
+            await register({ username: form.username, email: form.email, password: form.password });
             navigate('/dashboard');
         } catch {
-            setError('Username or password are incorrect.');
+            setError('Could not create account. Please try again.');
         } finally {
             setLoading(false);
         }
@@ -40,8 +46,8 @@ export function LoginPage() {
                     <span className="font-bold text-gray-800 text-lg">Lingua Station</span>
                 </div>
 
-                <h1 className="text-2xl font-bold text-gray-800 mb-1">Welcome back</h1>
-                <p className="text-gray-400 text-sm mb-6">Log in to continue learning.</p>
+                <h1 className="text-2xl font-bold text-gray-800 mb-1">Create your account</h1>
+                <p className="text-gray-400 text-sm mb-6">Start learning English today — it's free.</p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
@@ -53,6 +59,19 @@ export function LoginPage() {
                             onChange={handleChange}
                             required
                             placeholder="johndoe"
+                            className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                            placeholder="you@email.com"
                             className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
                     </div>
@@ -70,6 +89,19 @@ export function LoginPage() {
                         />
                     </div>
 
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Confirm password</label>
+                        <input
+                            type="password"
+                            name="confirm"
+                            value={form.confirm}
+                            onChange={handleChange}
+                            required
+                            placeholder="••••••••"
+                            className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        />
+                    </div>
+
                     {error && (
                         <p className="text-red-500 text-sm">{error}</p>
                     )}
@@ -79,14 +111,14 @@ export function LoginPage() {
                         disabled={loading}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg transition-colors disabled:opacity-50 cursor-pointer"
                     >
-                        {loading ? 'Logging in…' : 'Log In'}
+                        {loading ? 'Creating account…' : 'Sign Up'}
                     </button>
                 </form>
 
                 <p className="text-center text-sm text-gray-400 mt-6">
-                    Don't have an account?{' '}
-                    <Link to="/register" className="text-blue-600 font-medium hover:underline">
-                        Sign up
+                    Already have an account?{' '}
+                    <Link to="/login" className="text-blue-600 font-medium hover:underline">
+                        Log in
                     </Link>
                 </p>
             </div>

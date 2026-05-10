@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router";
 import { DashboardPage } from "../common/layouts/DashboardPage";
 import { LandingPage } from "../common/layouts/LandingPage";
 import { LoginPage } from "../features/auth/pages/login";
+import { RegisterPage } from "../features/auth/pages/register";
 import { ProtectedRoute } from "../features/auth/components/protected-route";
 import { DashboardHome } from "../features/dashboard/pages/DashboardHome";
 import { DictionaryPage } from "../features/dictionary/pages/DictionaryPage";
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
     {
         path: "/login",
         element: <LoginPage />,
+    },
+    {
+        path: "/register",
+        element: <RegisterPage />,
     },
     {
         Component: ProtectedRoute,
