@@ -26,5 +26,6 @@ export const fetchTopics = async () => {
 export const fetchSubtitleLanguages = async () => {
     const res = await fetch(`${BASE_URL}/subtitle_languages`, { headers: HEADERS });
     if (!res.ok) throw new Error(`API error: ${res.status}`);
-    return res.json();
+    const data = await res.json();
+    return data?.result?.results ?? [];
 };

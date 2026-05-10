@@ -1,4 +1,4 @@
-import { Outlet, Link, NavLink } from "react-router";
+import { Outlet, NavLink } from "react-router";
 
 export function DashboardPage() {
     return (
