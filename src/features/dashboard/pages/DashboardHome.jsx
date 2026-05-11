@@ -1,14 +1,7 @@
 import { Link } from 'react-router';
 import { useFlashcardStore } from '../../dictionary/store/flashcard-store';
 import { useNewsPreferencesStore } from '../../news/store/news-preferences-store';
-import { useTedPreferencesStore } from '../../ted/store/ted-preferences-store';
 
-const LANGUAGE_NAMES = {
-    'en': 'English', 'es': 'Spanish', 'fr': 'French', 'de': 'German',
-    'pt': 'Portuguese', 'pt-br': 'Portuguese (Brazil)', 'it': 'Italian',
-    'ja': 'Japanese', 'zh-cn': 'Chinese (Simplified)', 'ar': 'Arabic',
-    'ko': 'Korean', 'ru': 'Russian', 'nl': 'Dutch',
-};
 
 const DAYS = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 const STREAK = 8;
@@ -48,18 +41,6 @@ const QUESTS = [
         ),
     },
     {
-        num: '03', to: '/dashboard/ted',
-        title: 'TED: How to listen better',
-        sub: '12 min · subtitles in Spanish',
-        done: false, xp: 80, xpColor: 'text-orange-500', time: '12 min',
-        iconBg: 'bg-gray-800',
-        icon: (
-            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-            </svg>
-        ),
-    },
-    {
         num: '04', to: '/dashboard/dictionary',
         title: 'Practice 3 new phrasal verbs',
         sub: 'pull off, run into, look up',
@@ -77,10 +58,8 @@ const QUESTS = [
 export function DashboardHome() {
     const { cards } = useFlashcardStore();
     const { selectedCategories } = useNewsPreferencesStore();
-    const { subtitleLanguage } = useTedPreferencesStore();
 
     const dayName = DAYS[new Date().getDay()];
-    const subtitleName = LANGUAGE_NAMES[subtitleLanguage] ?? subtitleLanguage?.toUpperCase() ?? 'English';
     const doneCount = QUESTS.filter(q => q.done).length;
 
     const STATS = [
@@ -112,7 +91,7 @@ export function DashboardHome() {
         {
             value: '4h 12m',
             label: 'Minutes listened',
-            sub: subtitleName, subColor: 'text-green-500',
+            sub: '+2h this week', subColor: 'text-green-500',
             iconBg: 'bg-teal-100', iconColor: 'text-teal-500',
             icon: (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,7 +116,7 @@ export function DashboardHome() {
     ];
 
     return (
-        <div className="p-4 sm:p-6 max-w-5xl">
+        <div className="p-4 sm:p-6">
 
             {/* Top: hero + stats — stacked on mobile, side-by-side on lg */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-6">

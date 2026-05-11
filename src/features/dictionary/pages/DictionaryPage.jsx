@@ -52,6 +52,8 @@ export function DictionaryPage() {
                     <form onSubmit={handleSubmit} className="flex gap-2 mb-6">
                         <input
                             type="text"
+                            id="dictionary-search"
+                            name="query"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Search a word..."

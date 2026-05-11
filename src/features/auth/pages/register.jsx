@@ -51,8 +51,9 @@ export function RegisterPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                        <label htmlFor="reg-username" className="block text-sm font-medium text-gray-700 mb-1">Username</label>
                         <input
+                            id="reg-username"
                             type="text"
                             name="username"
                             value={form.username}
@@ -64,8 +65,9 @@ export function RegisterPage() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <label htmlFor="reg-email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                         <input
+                            id="reg-email"
                             type="email"
                             name="email"
                             value={form.email}
@@ -77,8 +79,9 @@ export function RegisterPage() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <label htmlFor="reg-password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <input
+                            id="reg-password"
                             type="password"
                             name="password"
                             value={form.password}
@@ -90,8 +93,9 @@ export function RegisterPage() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Confirm password</label>
+                        <label htmlFor="reg-confirm" className="block text-sm font-medium text-gray-700 mb-1">Confirm password</label>
                         <input
+                            id="reg-confirm"
                             type="password"
                             name="confirm"
                             value={form.confirm}
