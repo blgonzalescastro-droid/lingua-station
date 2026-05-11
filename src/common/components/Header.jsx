@@ -14,10 +14,9 @@ export function Header() {
             </Link>
 
             <nav className="hidden md:flex items-center gap-7">
-                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">How it works</a>
-                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Quests</a>
-                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Pricing</a>
-                <a href="#" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Stories</a>
+                <a href="#features" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">How it works</a>
+                <a href="#testimonials" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Testimonials</a>
+                <a href="#contact" className="text-gray-500 hover:text-gray-900 text-sm transition-colors">Contact</a>
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">

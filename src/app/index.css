@@ -7,3 +7,11 @@
 @theme {
   --font-bebas: 'Bebas Neue', "sans serif";
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 56px;
+}
