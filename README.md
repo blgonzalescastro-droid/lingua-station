@@ -43,7 +43,7 @@ VITE_RAPIDAPI_KEY=your_rapidapi_key
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/lingua-station.git
+   git clone https://github.com/blgonzalescastro-droid/lingua-station.git
    cd lingua-station
    ```
 
@@ -109,11 +109,6 @@ src/
     │   ├── components/       # NewsCard, CategorySelector
     │   ├── hooks/            # useNews
     │   ├── pages/            # NewsPage
-    │   └── store/            # Zustand preferences store
-    ├── ted/
-    │   ├── components/       # TalkCard, TopicFilter, LanguageSelector
-    │   ├── hooks/            # useTedTalks
-    │   ├── pages/            # TedPage
     │   └── store/            # Zustand preferences store
     └── dashboard/
         └── pages/            # DashboardHome (quests + stats)
